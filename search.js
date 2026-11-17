@@ -2,8 +2,11 @@ const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function linearSearch(array, element) {
   for (let i = 0; i < array.length; i++) {
+    console.log(element, ":", array, "(", array[i], ")");
+    await esperar(1000);
     if (element == array[i]) return i;
   }
+  return null;
 }
 
 async function binarySearch(orderedArray, element) {
@@ -44,6 +47,6 @@ async function binarySearch(orderedArray, element) {
 
 const array1 = [1, 3, 5, 7, 9];
 
-const elementPosition = await binarySearch(array1, 9);
+const elementPosition = await linearSearch(array1, 9);
 
 console.log("The searched element is at position", elementPosition);
