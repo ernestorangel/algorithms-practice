@@ -1,14 +1,16 @@
-const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const awaitForMs = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// O(n)
 async function linearSearch(array, element) {
   for (let i = 0; i < array.length; i++) {
     console.log(element, ":", array, "(", array[i], ")");
-    await esperar(1000);
+    await awaitForMs(1000);
     if (element == array[i]) return i;
   }
   return null;
 }
 
+// O(log n)
 async function binarySearch(orderedArray, element) {
   let lowerIndex = 0;
 
@@ -31,7 +33,7 @@ async function binarySearch(orderedArray, element) {
       ")",
     );
 
-    await esperar(1000);
+    await awaitForMs(1000);
 
     if (element > middleElement) {
       lowerIndex = middleIndex + 1;
